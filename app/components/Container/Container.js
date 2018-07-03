@@ -1,5 +1,19 @@
 import React, { Component } from "react";
-import { SafeAreaView, ImageBackground, View } from "react-native";
+import { SafeAreaView } from "react-native";
+import styled from "styled-components";
+
+const StyledContainer = styled.View`
+  flex: 1;
+  justify-content: flex-start;
+  background-color: white;
+`;
+
+const BackgroundImage = styled.ImageBackground`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-height: 326px;
+`;
 
 class Container extends Component {
   constructor(props) {
@@ -8,25 +22,13 @@ class Container extends Component {
 
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "flex-start",
-          backgroundColor: "white"
-        }}
-      >
-        <ImageBackground
+      <StyledContainer>
+        <BackgroundImage
           source={require("./images/header.png")}
           resizeMode="stretch"
-          style={{
-            width: "100%",
-            height: "100%",
-            maxHeight: 326,
-            position: "absolute"
-          }}
         />
         <SafeAreaView style={{ flex: 1 }}>{this.props.children}</SafeAreaView>
-      </View>
+      </StyledContainer>
     );
   }
 }

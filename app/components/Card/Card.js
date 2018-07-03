@@ -1,53 +1,57 @@
 import React, { Component } from "react";
-import { Image, View, Text } from "react-native";
+import styled from "styled-components";
 
-import { BuyButton } from "../Buttons";
+import { Pricetag } from "../Pricetag";
+import { Filter } from "../Filter";
+
+const StyledContainer = styled.TouchableOpacity`
+  margin: 0 16px 16px;
+  border-radius: 6px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16);
+`;
+
+const Thumbail = styled.Image`
+  width: 100%;
+`;
+
+const Content = styled.View`
+  position: relative;
+
+  margin: 0 16px;
+  padding: 16px 0;
+`;
+
+const Title = styled.Text`
+  font-size: 20px;
+  text-align: left;
+  color: #444444;
+`;
+
+const Filters = styled.View`
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+`;
 
 class Card extends Component {
   render() {
     return (
-      <View
-        style={{
-          marginHorizontal: 16,
-          marginBottom: 16,
-          borderRadius: 6,
-          backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.16)",
-          shadowOffset: {
-            width: 0,
-            height: 2
-          },
-          shadowRadius: 10,
-          shadowOpacity: 1
-        }}
-      >
-        <Image
+      <StyledContainer>
+        <Thumbail
           source={require("./images/breather187923Unsplash.png")}
           resizeMode="cover"
-          style={{ width: "100%" }}
         />
-        <View
-          style={{
-            marginHorizontal: 16,
-            paddingVertical: 16,
-            position: "relative"
-          }}
-        >
-          <BuyButton />
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: "normal",
-              fontStyle: "normal",
-              letterSpacing: 0,
-              textAlign: "left",
-              color: "#444444"
-            }}
-          >
-            Puerta del Sol Luxurious 2 Bedroom Apartment
-          </Text>
-        </View>
-      </View>
+        <Content>
+          <Pricetag />
+          <Title>Puerta del Sol Luxurious 2 Bedroom Apartment</Title>
+          <Filters>
+            <Filter />
+            <Filter />
+            <Filter />
+          </Filters>
+        </Content>
+      </StyledContainer>
     );
   }
 }

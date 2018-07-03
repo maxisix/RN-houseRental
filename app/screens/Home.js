@@ -1,12 +1,6 @@
 import React, { Component } from "react";
-import {
-  SafeAreaView,
-  Text,
-  TouchableHighlight,
-  View,
-  ScrollView,
-  StatusBar
-} from "react-native";
+import { TouchableHighlight, ScrollView, StatusBar } from "react-native";
+import PropTypes from "prop-types";
 
 import { Icon } from "../components/Icon";
 import { Container } from "../components/Container";
@@ -21,17 +15,25 @@ class Home extends Component {
     )
   };
 
+  static propTypes = {
+    navigation: PropTypes.object
+  };
+
+  handleCardPress = () => {
+    console.log("hello");
+    this.props.navigation.navigate("SingleHome");
+  };
+
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }}>
         <StatusBar barStyle="light-content" />
         <Container style={{ flex: 1 }}>
-          <Text style={{ marginTop: 50 }} />
-          <Card />
-          <Card />
-          <Card />
+          <Card onTouchStart={() => alert("Hello...")} />
+          <Card onPress={this.handlePressQuoteCurrency} />
+          <Card onClick={this.handleCardPress} />
         </Container>
-      </View>
+      </ScrollView>
     );
   }
 }

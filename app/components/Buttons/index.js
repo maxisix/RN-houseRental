@@ -1,3 +1,3 @@
-import BuyButton from "./BuyButton";
+import FormButton from "./FormButton";
 
-export { BuyButton };
+export { FormButton };
