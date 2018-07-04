@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { TouchableHighlight, ScrollView, StatusBar } from "react-native";
+import {
+  TouchableHighlight,
+  ScrollView,
+  StatusBar,
+  TouchableOpacity,
+  View
+} from "react-native";
 import PropTypes from "prop-types";
 
 import { Icon } from "../components/Icon";
@@ -10,7 +16,7 @@ class Home extends Component {
   static navigationOptions = {
     headerLeft: (
       <TouchableHighlight onPress={() => null} underlayColor="rgba(0, 0, 0, 0)">
-        <Icon />
+        <Icon name="menu" />
       </TouchableHighlight>
     )
   };
@@ -20,18 +26,25 @@ class Home extends Component {
   };
 
   handleCardPress = () => {
-    console.log("hello");
     this.props.navigation.navigate("SingleHome");
   };
 
   render() {
     return (
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView>
         <StatusBar barStyle="light-content" />
-        <Container style={{ flex: 1 }}>
-          <Card onTouchStart={() => alert("Hello...")} />
-          <Card onPress={this.handlePressQuoteCurrency} />
-          <Card onClick={this.handleCardPress} />
+        <Container>
+          <View style={{ marginTop: 64 }}>
+            <TouchableOpacity onPress={this.handleCardPress}>
+              <Card />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.handleCardPress}>
+              <Card />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.handleCardPress}>
+              <Card />
+            </TouchableOpacity>
+          </View>
         </Container>
       </ScrollView>
     );
